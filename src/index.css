@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Dark Gray Metallic Theme */
+    --background: 220 13% 9%;
+    --foreground: 220 13% 91%;
+
+    --card: 220 13% 12%;
+    --card-foreground: 220 13% 91%;
+
+    --popover: 220 13% 12%;
+    --popover-foreground: 220 13% 91%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 220 13% 9%;
+
+    --secondary: 220 13% 18%;
+    --secondary-foreground: 220 13% 91%;
+
+    --muted: 220 13% 15%;
+    --muted-foreground: 220 9% 60%;
+
+    --accent: 220 13% 18%;
+    --accent-foreground: 220 13% 91%;
+
+    --destructive: 0 63% 50%;
+    --destructive-foreground: 220 13% 91%;
+
+    --border: 220 13% 20%;
+    --input: 220 13% 15%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    /* Custom Design Tokens */
+    --metallic: 220 10% 25%;
+    --metallic-light: 220 15% 35%;
+    --metallic-dark: 220 13% 8%;
+    
+    /* Gradients */
+    --gradient-metallic: linear-gradient(135deg, hsl(220 13% 15%), hsl(220 10% 25%));
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 70%));
+    --gradient-hero: linear-gradient(135deg, hsl(220 13% 12%), hsl(220 10% 18%));
+    
+    /* Shadows */
+    --shadow-metallic: 0 8px 32px hsl(220 13% 8% / 0.4);
+    --shadow-glow: 0 0 40px hsl(217 91% 60% / 0.15);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Light mode (if needed for future) */
+  .light {
+    --background: 220 13% 96%;
+    --foreground: 220 13% 9%;
+    --card: 220 13% 98%;
+    --card-foreground: 220 13% 9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background: var(--gradient-hero);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--metallic));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--metallic-light));
+  }
+}
+
+@layer components {
+  .metallic-card {
+    @apply bg-card border border-border rounded-xl shadow-lg;
+    background: var(--gradient-metallic);
+    box-shadow: var(--shadow-metallic);
+  }
+
+  .glow-effect {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .smooth-transition {
+    transition: var(--transition-smooth);
+  }
+
+  .bounce-transition {
+    transition: var(--transition-bounce);
+  }
+}
+
+/* Animation Utilities */
+@keyframes slide-in-bottom {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+
+.animate-slide-in-bottom {
+  animation: slide-in-bottom 0.3s ease-out;
+}
